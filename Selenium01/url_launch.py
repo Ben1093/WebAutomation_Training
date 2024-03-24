@@ -12,11 +12,12 @@ import pytest
 
 @pytest.fixture()
 def driver():
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome() #(API request will be created) will Create session with POST request #Fresh browser will open, Session ID is created
     yield driver # instead of storing we can return them
     return driver # value will be stored permanently, extra variable
 
 def test_open_the_browser_and_launch_application(driver):
     driver.get("https://restful-booker.herokuapp.com/")
+    driver.maximize_window()
     assert "Welcome to Restful-Booker" == driver.title
     print(driver.title)
